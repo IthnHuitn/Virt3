@@ -51,11 +51,11 @@
 #### Объяснение проблемы:
 Проблема в том, что контейнер был запущен с пробросом порта 127.0.0.1:8080:80, что означает: "все запросы, приходящие на порт 8080 хоста, перенаправлять на порт 80 контейнера". Однако внутри контейнера мы изменили конфигурацию nginx так, что он теперь слушает порт 81, а не 80. В результате:
 
-    Запросы приходят на порт 80 контейнера (через проброс с хоста)
+- Запросы приходят на порт 80 контейнера (через проброс с хоста)
 
-    Но nginx внутри контейнера ничего не слушает на порту 80
+- Но nginx внутри контейнера ничего не слушает на порту 80
 
-    Соединение не может быть установлено (connection reset)
+- Соединение не может быть установлено (connection reset)
 
 Командой
 ```bash
@@ -101,14 +101,20 @@ docker inspect --format="{{.Id}}" custom-nginx-t2
 
 ![Virt3-3-7](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-7.png)
 
-Удаляю контейнер:
+После внесения изменений запускаю Docker и проверяю результат.
+
+
+![Virt3-3-8-1](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-8-1.png)
+
+
+Удаляю контейнер одной командой:
 
 ![Virt3-3-9](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-9.png)
 
 ### Задание 4
 
-![Virt3-3-9](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-9.png)
-![Virt3-3-9](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-9.png)
+![Virt3-4-1](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-4-1.png)
+![Virt3-4-2](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-4-2.png)
 
 
 ### Задание 5
