@@ -45,8 +45,8 @@
 Контейнер остановился, потому что команда docker attach подключилась к основному процессу контейнера (PID 1), которым является nginx. Когда мы нажали Ctrl-C, сигнал был передан этому процессу, и nginx завершил свою работу. В Docker контейнер живет, пока живет его главный процесс (PID 1). Как только процесс nginx завершился, контейнер остановился.
 
 ![Virt3-3-2](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-2.png)
-![Virt3-3-3](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-2.png)
-![Virt3-3-5](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-2.png)
+![Virt3-3-3](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-3.png)
+![Virt3-3-5](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-3-5.png)
 
 #### Объяснение проблемы:
 Проблема в том, что контейнер был запущен с пробросом порта 127.0.0.1:8080:80, что означает: "все запросы, приходящие на порт 8080 хоста, перенаправлять на порт 80 контейнера". Однако внутри контейнера мы изменили конфигурацию nginx так, что он теперь слушает порт 81, а не 80. В результате:
