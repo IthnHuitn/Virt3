@@ -126,4 +126,34 @@ docker inspect --format="{{.Id}}" custom-nginx-t2
 ![Virt3-5-5](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-5-5.png)
 ![Virt3-5-6](https://github.com/IthnHuitn/Virt3/blob/master/screens/Virt3-5-6.png)
 
+Удаляю compose.yaml
 
+Docker Compose обнаружил "осиротевший" контейнер - task5-portainer-1, который был создан ранее, но сейчас не описан в текущем compose-файле.
+
+Что произошло:
+
+  -  Раньше у меня был файл compose.yaml, который описывал сервис portainer
+
+  -  Я удалил compose.yaml
+
+  -  Остался только docker-compose.yaml, который описывает только registry
+
+  -  Контейнер portainer продолжает существовать, но теперь о нем "никто не знает" - он стал "сиротой"
+
+Выполняю команду 
+
+```bash
+docker compose up -d --remove-orphans
+```
+
+Произошло следующее:
+
+ -   Docker Compose прочитал текущий файл docker-compose.yaml
+
+ -   Увидел, что в нем описан только сервис registry
+
+ -   Обнаружил запущенный контейнер task5-portainer-1, который не соответствует ни одному сервису в текущем файле
+
+ -   Удалил "осиротевший" контейнер (task5-portainer-1 Removed)
+
+ -   Запустил/проверил сервис registry (он уже был запущен)
